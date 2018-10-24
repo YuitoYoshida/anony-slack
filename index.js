@@ -8,6 +8,15 @@ const db = new nedb({
 require('dotenv').config();
 const ngWord = new RegExp(process.env.NGWORD, 'i');
 
+const http = require('http');
+http.createServer((req, res)=>{
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('anony-slack');
+    res.end();
+}).listen(process.env.PORT, '0.0.0.0', ()=>{
+    console.log(`Server running at ${process.env.PORT}`);
+});
+
 const botKit = require('botkit');
 
 const controller = botKit.slackbot({debug: false});
