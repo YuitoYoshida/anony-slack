@@ -1,0 +1,30 @@
+{
+  "name": "anony-slack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "botkit": "^0.6.17",
+    "dotenv": "^6.1.0",
+    "nedb": "^1.8.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuitoYoshida/anony-slack.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "yuito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuitoYoshida/anony-slack/issues"
+  },
+  "homepage": "https://github.com/YuitoYoshida/anony-slack#readme"
+}
