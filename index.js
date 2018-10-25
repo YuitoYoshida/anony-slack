@@ -27,13 +27,18 @@ const BOT = controller.spawn({
     if(err) throw new Error(err);
 });
 
-
 controller.hears(/.*/, ['direct_message'], (bot, msg)=>{
+    /*db.count({user: msg.user}, (docCountErr, count)=>{
+        console.log(count);
+    });*/
     db.findOne({user: msg.user}, (err, doc)=>{
         if(doc == null){
             bot.reply(msg, process.env.POLICY);
             db.insert({user: msg.user});
             return;
+        }
+        if(/!NG一覧/i.test(msg.text)){
+            bot.reply(msg, '今の禁止単語は' + process.env.NGWORD + 'です。');
         }
         if(/<@.........>/i.test(msg.text) || ngWord.test(msg.text)){
             bot.reply(msg, process.env.NGMSG);
@@ -47,12 +52,5 @@ controller.hears(/.*/, ['direct_message'], (bot, msg)=>{
             text: '```' + JSON.stringify(msg) + '```' + ` <@${msg.user}>` + msg.text,
             channel: process.env.LOG
         });
-
-
-
-
     });
-
 });
-
-setTimeout(BOT.destroy.bind(BOT), 1800000);
